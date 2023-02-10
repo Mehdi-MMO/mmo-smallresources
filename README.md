@@ -13,8 +13,8 @@ Standalone Script
 * Removal of GTA's default ambient sounds
 * Removal of GTA's default health regen
 * Removal of GTA's default stamina buff
-* Removal of GTA's default huds (weapon wheel, cash etc.)
-* Removal of GTA's default pistol whiping
+* Removal of GTA's default HUDs (weapon wheel, cash etc.)
+* Removal of GTA's default pistol whipping
 * Pointing animation with finger (by pressing "B")
 * Helicoper real take off & landing and HUD
 * Flash headlights when car horn is active
