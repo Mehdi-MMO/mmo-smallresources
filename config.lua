@@ -151,7 +151,7 @@ Config.HudElements = {
 
 Config.Blips = true
 Config.TheBlips = {
-    {title="Del Perro Pier", colour=266, id=38, x = -1662.0057, y = -1124.9044, z = 13.6933},
-    {title="FBI", colour=40, id=498, x =141.5096, y =-743.9552, z = 39.8927},
-  }
+    {title="Del Perro Pier", colour=266, id=38, vector3 = vector3(-1662.0057, -1124.9044, 13.6933)},
+    {title="FBI", colour=40, id=498, vector3 = vector3(141.5096, -743.9552, 39.8927)},
+}
   
