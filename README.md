@@ -38,3 +38,7 @@ ensure mmo-smallresources
 ## Configuration
 
 There's a config file.
+
+## Credits
+
+*Andyyy#7666
