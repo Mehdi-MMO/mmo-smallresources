@@ -41,4 +41,4 @@ There's a config file.
 
 ## Credits
 
-*Andyyy#7666
+* [Andyyy#7666 Helicopter Hud](https://github.com/Andyyy7666/HelicopterHUD)
