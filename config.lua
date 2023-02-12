@@ -86,10 +86,9 @@ Config.BlindFire = true -- True to stop players from blind firing around corners
 Config.Crouch = true -- True to add updated crouch feature, false to ignore (Left Ctrl to use crouch)
 Config.CustomPlates = false -- Custom California plates stream
 Config.DisableAmbientSounds = true -- True Lowers the noises of ammunations gun range, false leaves native ambiance
-Config.DisconnectCmdName = "disconnecttest" -- command name for test
 Config.DisconnectReason = true -- Send a message in the console for all clients with who disconnected and the reason
 Config.DisconnectTest = true -- if you want to test it
-Config.Dispatch = true -- Disable police and ems native dispatch
+Config.DisconnectCmdName = "disconnecttest" -- command name for test
 Config.DriveBy = true -- True to stop players from shooting from a moving vehicle going above 30mph. False to diable.(Find the lines below in client.lua and change 30 to whatever speed you want set)
 Config.DriveBySpeed = 30 -- In MPH
 Config.HandsUp = true -- Enables the handsup emote by using the keybind below
@@ -128,7 +127,16 @@ Config.HudElements = {
     HUD_WANTED_STARS = { id = 1, hidden = true }, -- True to hide the hud element
 }
 
-Config.Traffic = true -- True to disable generators, false to allow generators of peds and vehicles
+Config.ManagedDensity = true
+Config.GeneratorsDensity = {
+    ['vehicle'] = 0.8,
+    ['parked'] = 0.8,
+    ['multiplier'] = 0.8,
+    ['peds'] = 0.8,
+    ['actions'] = 0.8
+}
+
+Config.TrafficZones = false -- True to disable generators, false to allow generators of peds and vehicles
 Config.TrafficArea = { -- Add or remove generators below
     { pos = vector3( -1539.89, -992.49, 13.02), radius = 100 }, --Del Perro Pier parking lot
     { pos = vector3( -50.82, -1114.05, 26.44),  radius = 100 }, --Premium Deluxe Motors Dealership
