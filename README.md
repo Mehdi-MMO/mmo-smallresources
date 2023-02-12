@@ -10,6 +10,7 @@ Standalone Script
 * Removal of GTA's Blind Corner Weapon Fire
 * Removal of GTA's default weapons drops
 * Removal of GTA's default vehicle drops
+* Removal of GTA's default vehicles a peds generators
 * Removal of GTA's default ambient sounds
 * Removal of GTA's default health regen
 * Removal of GTA's default stamina buff
