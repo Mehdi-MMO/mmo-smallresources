@@ -136,6 +136,7 @@ Config.GeneratorsDensity = {
     ['actions'] = 0.8
 }
 
+-- If ManagedDensity is enabled this will be kept disabled.
 Config.TrafficZones = false -- True to disable generators, false to allow generators of peds and vehicles
 Config.TrafficArea = { -- Add or remove generators below
     { pos = vector3( -1539.89, -992.49, 13.02), radius = 100 }, --Del Perro Pier parking lot
