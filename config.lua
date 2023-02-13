@@ -128,6 +128,15 @@ Config.HudElements = {
     HUD_WANTED_STARS = { id = 1, hidden = true }, -- True to hide the hud element
 }
 
+Config.ManagedDensity = true
+Config.GeneratorsDensity = {
+    ['vehicle'] = 0.8,
+    ['parked'] = 0.8,
+    ['multiplier'] = 0.8,
+    ['peds'] = 0.8,
+    ['actions'] = 0.8
+}
+
 Config.DisableWeapons = true -- True to disable weapons, false to allow weapons, only use DisableWeapons = true if you aren't using the Config.VehicleWeapons below
 
 -- Config.VehicleWeapons = { --Vehicle model hashes to disable weapons from use
