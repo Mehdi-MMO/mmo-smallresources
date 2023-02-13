@@ -4,19 +4,13 @@ lua54 'yes'
 
 title "mmo-smallresources"
 author "Mehdi MMO - Sweet Vibes#7561"
-description "a script that contain multiple needed rp functionalities"
-version "1.0.0"
+description "A script that contains multiple needed roleplay functionalities"
+version "1.0.4"
 
 -------------------- SCRIPTS -------------------
 
-server_scripts {
-    'server/*.lua',
-}
+server_scripts {'server/*.lua'}
 
-client_scripts {
-    'client/*.lua',
-}
+client_scripts {'client/*.lua'}
 
-shared_scripts {
-    'config.lua',
-}
+shared_scripts {'config.lua'}

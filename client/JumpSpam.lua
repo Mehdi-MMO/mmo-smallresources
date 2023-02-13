@@ -1,5 +1,7 @@
 if Config.JumpSpam then
     local ragdoll_chance = 0.5
+    local ragdoll_time = 5000
+    local ragdoll_flags = 1 + 2
 
     Citizen.CreateThread(function()
         while true do
@@ -10,7 +12,7 @@ if Config.JumpSpam then
                 if math.random() < ragdoll_chance then
                     Citizen.Wait(600)
                     ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.08)
-                    SetPedToRagdoll(ped, 5000, 1, 2)
+                    SetPedToRagdoll(ped, ragdoll_time, ragdoll_flags, 0, false, true, false)
                 else
                     Citizen.Wait(2000)
                 end
