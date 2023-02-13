@@ -128,6 +128,13 @@ Config.HudElements = {
     HUD_WANTED_STARS = { id = 1, hidden = true }, -- True to hide the hud element
 }
 
+Config.DisableWeapons = true -- True to disable weapons, false to allow weapons, only use DisableWeapons = true if you aren't using the Config.VehicleWeapons below
+
+-- Config.VehicleWeapons = { --Vehicle model hashes to disable weapons from use
+--     628003514,
+--     -410205223,
+-- }
+
 Config.Traffic = true -- True to disable generators, false to allow generators of peds and vehicles
 Config.TrafficArea = { -- Add or remove generators below
     { pos = vector3( -1539.89, -992.49, 13.02), radius = 100 }, --Del Perro Pier parking lot
