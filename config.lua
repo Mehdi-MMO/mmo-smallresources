@@ -147,10 +147,10 @@ Config.GeneratorsDensity = {
 -- If ManagedDensity is enabled this will be kept disabled.
 Config.TrafficZones = false -- True to disable generators, false to allow generators of peds and vehicles
 Config.TrafficArea = { -- Add or remove generators below
-    { pos = vector3( -1539.89, -992.49, 13.02), radius = 100 }, --Del Perro Pier parking lot
-    { pos = vector3( -50.82, -1114.05, 26.44),  radius = 100 }, --Premium Deluxe Motors Dealership
-    { pos = vector3(824.36, -998.82, 26.29),    radius = 100 }, --La Mesa Gas Station
-    { pos = vector3(922.22, 50.87, 80.9),       radius = 200 }, --Diamond Casino
+    { pos = vector3( -1539.89, -992.49, 13.02), radius = 100 }, -- Del Perro Pier parking lot
+    { pos = vector3( -50.82, -1114.05, 26.44),  radius = 100 }, -- Premium Deluxe Motors Dealership
+    { pos = vector3(824.36, -998.82, 26.29),    radius = 100 }, -- La Mesa Gas Station
+    { pos = vector3(922.22, 50.87, 80.9),       radius = 200 }, -- Diamond Casino
 }
 
 Config.Blips = true
@@ -158,3 +158,23 @@ Config.TheBlips = {
     { title = "Del Perro Pier", colour = 266, id = 38,  vector3 = vector3( -1662.0057, -1124.9044, 13.6933) },
     { title = "FBI",            colour = 40,  id = 498, vector3 = vector3(141.5096, -743.9552, 39.8927) },
 }
+
+Config.DiscordRPC = {
+    ["Enabled"] = true, -- If true, discord rich presence will be enabled.
+    ["ApplicationId"] = '00000000000000000', -- Discord application id
+    ["IconSmall"] = 'small_logo_name', -- The small icon's name
+    ["IconSmallHoverText"] = 'This is a Small icon with text', -- The small icon's hover text
+    ["IconLarge"] = 'logo_name', -- The large icon's name
+    ["IconLargeHoverText"] = 'This is a Large icon with text', -- The large icon's hover text
+    ["UpdateRate"] = 60000, -- How frequently should the player count be updated?
+    ["ShowPlayerCount"] = true, -- If true, the player count will be shown in the rich presence.
+    ["MaxPlayers"] = 48, -- Maximum number of players
+    ["Buttons"] = {{
+        text = 'First Button',
+        value = 'https://discord.gg/FqQFzndxZ4'
+    }, {
+        text = 'Second Button',
+        value = 'https://discord.gg/FqQFzndxZ4'
+    }}
+}
+  
