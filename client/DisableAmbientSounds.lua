@@ -5,7 +5,6 @@ if Config.DisableAmbientSounds then
         SetAudioFlag("DisableFlightMusic", true)
         SetAudioFlag("PoliceScannerDisabled", true)
         SetDeepOceanScaler(0.0)
-        SetPlayerCanUseCover(PlayerId(), false)
         SetRandomEventFlag(false)
         SetScenarioTypeEnabled("WORLD_VEHICLE_BIKE_OFF_ROAD_RACE", false)
         SetScenarioTypeEnabled("WORLD_VEHICLE_BUSINESSMEN", false)
