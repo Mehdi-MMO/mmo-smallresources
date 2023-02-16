@@ -1,4 +1,4 @@
-if Config.MangedDensity then
+if Config.ManagedDensity then
     Citizen.CreateThread(function()
         while true do
             Citizen.Wait(0)
