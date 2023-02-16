@@ -4,9 +4,9 @@ if Config.BlindFire then
             Citizen.Wait(5)
             local ped = PlayerPedId()
             if IsPedInCover(ped, 1) and not IsPedAimingFromCover(ped, 1) then
-                DisableControlAction(2, 24, true)
-                DisableControlAction(2, 142, true)
-                DisableControlAction(2, 257, true)
+                DisableControlAction(0, 24, true) -- Attack
+                DisableControlAction(0, 142, true) -- Melee Attack 1
+                DisableControlAction(0, 257, true) -- Attack 2
             end
         end
     end)
