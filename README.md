@@ -21,6 +21,7 @@ Standalone Script
 * Flash headlights when car horn is active
 * F8 message print on player drop.
 * Ability to add custom blips
+* Discord Rich Presence
 * Custom license plates
 * Drive by speed limit
 * Vehicle disarming
