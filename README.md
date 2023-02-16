@@ -23,7 +23,8 @@ Standalone Script
 * Ability to add custom blips
 * Custom license plates
 * Drive by speed limit
-* Ability to Crouch
+* Vehicle disarming
+* Ability to crouch
 * Hands up
 
 
