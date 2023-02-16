@@ -1,11 +1,10 @@
 if Config.HideHud then
-
     Citizen.CreateThread(function()
         while true do
             Citizen.Wait(0)
-            for _, val in pairs(Config.HudElements) do
-                if val.hidden then
-                    HideHudComponentThisFrame(val.id)
+            for i = 1, #Config.HudElements do
+                if Config.HudElements[i].hidden then
+                    HideHudComponentThisFrame(Config.HudElements[i].id)
                 end
             end
         end
