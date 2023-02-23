@@ -1,32 +1,70 @@
-local canHandsUp = false
+if Config.HandsUp.enabled then
 
-if Config.HandsUp then
-    canHandsUp = true
-end
+    local handsStatus = false
+    local surrenderStatus = false
 
-AddEventHandler('handsup:toggle', function(param)
-    canHandsUp = param
-end)
-
-Citizen.CreateThread(function()
-    local handsup = false
-    local playerPed = PlayerPedId()
-
-    RequestAnimDict('random@mugging3')
-    while not HasAnimDictLoaded('random@mugging3') do
-        Citizen.Wait(100)
+    local function RequestAndWaitForAnimDict(dict)
+        RequestAnimDict(dict)
+        while not HasAnimDictLoaded(dict) do
+            Citizen.Wait(100)
+        end
     end
 
-    while true do
-        Citizen.Wait(0)
-        if canHandsUp and IsControlJustReleased(0, Config.HandsUpKeybind) then
-            if handsup then
-                handsup = false
-                ClearPedTasks(playerPed)
+    local function check(ped)
+        if not IsEntityDead(ped) and not IsPedDeadOrDying(ped) and not IsPlayerFreeAiming(ped) and
+            not IsPedAimingFromCover(ped) and not IsPedSwimming(ped) and not IsPedShooting(ped) and
+            not IsPedClimbing(ped) and not IsPedCuffed(ped) and not IsPedDiving(ped) and not IsPedFalling(ped) and
+            not IsPedJumping(ped) and not IsPedJumpingOutOfVehicle(ped) and IsPedOnFoot(ped) and not IsPedRunning(ped) and
+            not IsPedInParachuteFreeFall(ped) and not IsPedSprinting(ped) then
+            return true
+        else
+            return false
+        end
+    end
+
+    function hands(bool)
+        local ped = PlayerPedId()
+
+        local dict = 'missminuteman_1ig_2'
+
+        if check(ped) then
+            if bool then
+                RequestAndWaitForAnimDict(dict)
+                TaskPlayAnim(ped, dict, 'handsup_enter', 8.0, 8.0, -1, 50, 0, false, false, false)
+                handsStatus = true
             else
-                handsup = true
-                TaskPlayAnim(playerPed, 'random@mugging3', 'handsup_standing_base', 8.0, -8.0, -1, 49, 0, 0, 0, 0)
+                ClearPedTasks(ped)
+                handsStatus = false
             end
         end
     end
-end)
+
+    function surrender(bool)
+        local ped = PlayerPedId()
+
+        local dict = 'random@arrests'
+
+        if check(ped) == true then
+            if bool then
+                RequestAndWaitForAnimDict(dict)
+                TaskPlayAnim(ped, dict, "idle_2_hands_up", 8.0, 1.0, -1, 2, 0, 0, 0, 0)
+                surrenderStatus = true
+            else
+                ClearPedTasks(ped)
+                surrenderStatus = false
+            end
+        end
+    end
+
+    RegisterCommand('surrender', function()
+        surrender(not surrenderStatus)
+    end)
+
+    RegisterCommand('handsup', function()
+        hands(not handsStatus)
+    end)
+
+    RegisterKeyMapping('handsup', 'Toggle Hands Up', 'KEYBOARD', Config.HandsUp.keybind)
+    RegisterKeyMapping('surrender', 'Toggle Surrender', 'KEYBOARD', Config.HandsUp.surrender)
+
+end

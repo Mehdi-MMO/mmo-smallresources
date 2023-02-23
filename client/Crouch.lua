@@ -28,7 +28,8 @@ if Config.Crouch then
 
     local CanCrouch = function()
         local PlayerPed = PlayerPedId()
-        return IsPedOnFoot(PlayerPed) and not IsPedJumping(PlayerPed) and not IsPedFalling(PlayerPed) and not IsPedDeadOrDying(PlayerPed)
+        return IsPedOnFoot(PlayerPed) and not IsPedJumping(PlayerPed) and not IsPedFalling(PlayerPed) and
+                   not IsPedDeadOrDying(PlayerPed)
     end
 
     local CrouchPlayer = function()

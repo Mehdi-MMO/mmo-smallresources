@@ -81,6 +81,12 @@ Keys = {
 ---------------------------------------------------------------------
 ---------------------------------------------------------------------
 ---------------------------------------------------------------------
+HandsUp = {
+    enabled = true,
+    keybind = 'X',
+    surrender = 'F9'
+}
+
 Config.AimAssist = true -- True to remove aim assist on controllers. False to allow
 Config.BlindFire = true -- True to stop players from blind firing around corners. False to allow blind firing around corners
 Config.Crouch = true -- True to add updated crouch feature, false to ignore (Left Ctrl to use crouch)
@@ -91,8 +97,6 @@ Config.DisconnectTest = true -- if you want to test it
 Config.DisconnectCmdName = "disconnecttest" -- command name for test
 Config.DriveBy = true -- True to stop players from shooting from a moving vehicle going above 30mph. False to diable.(Find the lines below in client.lua and change 30 to whatever speed you want set)
 Config.DriveBySpeed = 30 -- In MPH
-Config.HandsUp = true -- Enables the handsup emote by using the keybind below
-Config.HandsUpKeybind = Keys["X"]
 Config.HeadLightsStrength = 10 -- There's no limit, recommended to go above 10.0 to blind em people
 Config.HealthRegen = false -- True stops native health regeneration, false allows native health regeneration to happen
 Config.Heli = true -- Helicopter HUD and Realisitc takeoff/landing
@@ -128,12 +132,11 @@ Config.HudElements = {
 }
 
 
-Config.DisableWeapons = true -- True to disable weapons, false to allow weapons, only use DisableWeapons = true if you aren't using the Config.VehicleWeapons below
-
--- Config.VehicleWeapons = { --Vehicle model hashes to disable weapons from use
---     628003514,
---     -410205223,
--- }
+Config.DisableVehicleWeapons = true -- True to disable all weapons, false to disable specific weapons AND only use DisableWeapons = false if you are using the Config.VehicleWeapons below
+Config.VehicleWeapons = { -- Vehicle model hashes to disable weapons from use
+    628003514,
+    -410205223,
+}
 
 Config.ManagedDensity = true
 Config.GeneratorsDensity = {
