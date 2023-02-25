@@ -10,7 +10,7 @@ AddEventHandler('onResourceStart', function(ResourceName)
 
                 if NewestVersion ~= Version then
                     print(
-                        "\n\n^1[WARNING]^3 The script is outdated. Please download the latest version from the Mehdi MMO's GitHub")
+                        "\n\n^1[WARNING]^3 The script is outdated v(" .. Version .. ") Please download the latest version v(" .. NewestVersion .. ") Resfrom the Mehdi MMO's GitHub")
                     print(
                         "                  ^2Github Link: ^9https://github.com/Mehdi-MMO/mmo-smallresources/releases \n\n")
                 end
