@@ -1,21 +1,24 @@
-local Version = GetResourceMetadata(GetCurrentResourceName(), "version", 0)
-local Repository = 'https://raw.githubusercontent.com/Mehdi-MMO/mmo-smallresources/main/version.txt'
+local function trim(s)
+    return s:match('^%s*(.*%S)') or ''
+end
 
-AddEventHandler('onResourceStart', function(ResourceName)
-    if ResourceName == GetCurrentResourceName() then
-        PerformHttpRequest(Repository, function(Error, NewestVersion, Header)
-            if Error == 200 then
+local currentVersion = GetResourceMetadata(GetCurrentResourceName(), 'version', 0)
+local repositoryUrl = 'https://raw.githubusercontent.com/Mehdi-MMO/mmo-smallresources/main/version.txt'
 
-                NewestVersion = string.gsub(NewestVersion, '\n', '')
+AddEventHandler('onResourceStart', function(resourceName)
+    if resourceName == GetCurrentResourceName() then
+        PerformHttpRequest(repositoryUrl, function(errorCode, newestVersion, headers)
+            if errorCode == 200 then
+                newestVersion = trim(newestVersion)
+                currentVersion = trim(currentVersion)
 
-                if NewestVersion ~= Version then
-                    print(
-                        "\n\n^1[WARNING]^3 The script is outdated v(" .. Version .. ") Please download the latest version v(" .. NewestVersion .. ") Resfrom the Mehdi MMO's GitHub")
-                    print(
-                        "                  ^2Github Link: ^9https://github.com/Mehdi-MMO/mmo-smallresources/releases \n\n")
+                if newestVersion ~= currentVersion then
+                    print(string.format(
+                        '\n\n^1[WARNING]^3 The script is outdated v(%s). Please download the latest version v(%s) from Mehdi MMO\'s GitHub repository: ^9%s/releases\n\n',
+                        currentVersion, newestVersion, 'https://github.com/Mehdi-MMO/mmo-smallresources'))
                 end
             else
-                print("\n\n^1[ERROR]^3 Failed to check for updates.\n")
+                print('\n\n^1[ERROR]^3 Failed to check for updates.\n')
             end
         end)
     end
