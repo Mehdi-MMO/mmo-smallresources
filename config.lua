@@ -82,9 +82,9 @@ Keys = {
 ---------------------------------------------------------------------
 ---------------------------------------------------------------------
 HandsUp = {
-    enabled = true,
-    keybind = 'X',
-    surrender = 'F9'
+    ['enabled'] = true,
+    ['keybind'] = 'X',
+    ['surrender'] = 'F9'
 }
 
 Config.AimAssist = true -- True to remove aim assist on controllers. False to allow
