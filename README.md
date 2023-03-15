@@ -15,11 +15,12 @@ Standalone Script
 * Removal of GTA's default stamina buff
 * Removal of GTA's default pistol whipping
 
+* Dynamic ped spawner based on the time of day and weather conditions
 * Pointing animation with finger (by pressing "B")
 * Helicoper real take off & landing and HUD
 * Jump spam makes player drop on the ground
 * Flash headlights when car horn is active
-* F8 message print on player drop.
+* F8 message print on player drop (disconnect).
 * Ability to add custom blips
 * Discord Rich Presence
 * Custom license plates

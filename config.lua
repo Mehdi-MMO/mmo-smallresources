@@ -149,6 +149,15 @@ Config.GeneratorsDensity = {
     ['actions'] = 0.8
 }
 
+Config.DynamicPedSpawner = true -- Adjusts the ped spawn rate based on the time of day and weather conditions
+Config.spawnRadius = 100.0 -- Normal peds spawn density from Config.GeneratorsDensity
+Config.spawnLocations = {
+    { x = -73.0, y = -818.0, z = 243.0 },
+    { x = 284.0, y = -1313.0, z = 32.0 },
+    { x = -164.0, y = -1001.0, z = 233.0 },
+    { x = 267.0, y = -1748.0, z = 29.0 }
+}
+
 -- If ManagedDensity is enabled this will be kept disabled.
 Config.TrafficZones = false -- True to disable generators, false to allow generators of peds and vehicles
 Config.TrafficArea = { -- Add or remove generators below
