@@ -121,17 +121,13 @@ Config.HudElements = {
     HUD_WEAPON_ICON = { id = 2, hidden = true },
     HUD_CASH = { id = 3, hidden = true },
     HUD_MP_CASH = { id = 4, hidden = true },
-    HUD_MP_MESSAGE = { id = 5, hidden = true },
     HUD_VEHICLE_NAME = { id = 6, hidden = true },
     HUD_AREA_NAME = { id = 7, hidden = true },
     HUD_VEHICLE_CLASS = { id = 8, hidden = true },
     HUD_STREET_NAME = { id = 9, hidden = true },
-    HUD_HELP_TEXT = { id = 10, hidden = false },
-    HUD_FLOATING_HELP_TEXT_1 = { id = 11, hidden = false },
-    HUD_FLOATING_HELP_TEXT_2 = { id = 12, hidden = false },
     HUD_CASH_CHANGE = { id = 13, hidden = true },
     HUD_RETICLE = { id = 14, hidden = true },
-    HUD_SAVING_GAME = { id = 17, hidden = true }, -- True to hide the hud element
+    HUD_SAVING_GAME = { id = 17, hidden = true },    -- True to hide the hud element
 }
 
 Config.DisableVehicleWeapons = true -- True to disable all weapons, false to disable specific weapons AND only use DisableWeapons = false if you are using the Config.VehicleWeapons below
@@ -150,8 +146,8 @@ Config.GeneratorsDensity = {
 }
 
 Config.DynamicPedSpawner = true -- Adjusts the ped spawn rate based on the time of day and weather conditions
-Config.spawnRadius = 100.0 -- Normal peds spawn density from Config.GeneratorsDensity
-Config.spawnLocations = {
+Config.dspawnRadius = 100.0 -- Normal peds spawn density from Config.GeneratorsDensity
+Config.dspawnLocations = {
     { x = -73.0, y = -818.0, z = 243.0 },
     { x = 284.0, y = -1313.0, z = 32.0 },
     { x = -164.0, y = -1001.0, z = 233.0 },
