@@ -81,6 +81,7 @@ Keys = {
 ---------------------------------------------------------------------
 ---------------------------------------------------------------------
 ---------------------------------------------------------------------
+
 Config.HandsUp = {
     ['enabled'] = true,
     ['keybind'] = 'X',
@@ -113,29 +114,30 @@ Config.StaminaBuff = true -- True to give staminia buff, allowing longer running
 Config.VehRewards = true -- True to disable vehicle rewards (guns from cars). False to enable vehicle rewards
 Config.WeaponDrops = true -- True to stop NPC wewapon drop rewards. False to allow NPC to drop weapon rewards
 
-
 Config.HideHud = true -- hide hud element below
+-- IF SET TO TRUE, IT WILL FORCE SHOW IT! DELETE THE LINE THE CONFIG OR COMMENT IT!
 Config.HudElements = {
-    HUD_AREA_NAME = { id = 7, hidden = true },
+    HUD_WANTED_STARS = { id = 1, hidden = true },
+    HUD_WEAPON_ICON = { id = 2, hidden = true },
     HUD_CASH = { id = 3, hidden = true },
-    HUD_CASH_CHANGE = { id = 13, hidden = true },
-    HUD_FLOATING_HELP_TEXT_1 = { id = 11, hidden = false },
-    HUD_FLOATING_HELP_TEXT_2 = { id = 12, hidden = false },
-    HUD_HELP_TEXT = { id = 10, hidden = false },
     HUD_MP_CASH = { id = 4, hidden = true },
     HUD_MP_MESSAGE = { id = 5, hidden = true },
-    HUD_SAVING_GAME = { id = 17, hidden = true },
-    HUD_STREET_NAME = { id = 9, hidden = true },
-    HUD_VEHICLE_CLASS = { id = 8, hidden = true },
     HUD_VEHICLE_NAME = { id = 6, hidden = true },
-    HUD_WANTED_STARS = { id = 1, hidden = true }, -- True to hide the hud element
+    HUD_AREA_NAME = { id = 7, hidden = true },
+    HUD_VEHICLE_CLASS = { id = 8, hidden = true },
+    HUD_STREET_NAME = { id = 9, hidden = true },
+    HUD_HELP_TEXT = { id = 10, hidden = false },
+    HUD_FLOATING_HELP_TEXT_1 = { id = 11, hidden = false },
+    HUD_FLOATING_HELP_TEXT_2 = { id = 12, hidden = false },
+    HUD_CASH_CHANGE = { id = 13, hidden = true },
+    HUD_RETICLE = { id = 14, hidden = true },
+    HUD_SAVING_GAME = { id = 17, hidden = true }, -- True to hide the hud element
 }
 
-
 Config.DisableVehicleWeapons = true -- True to disable all weapons, false to disable specific weapons AND only use DisableWeapons = false if you are using the Config.VehicleWeapons below
-Config.VehicleWeapons = { -- Vehicle model hashes to disable weapons from use
-    628003514,
-    -410205223,
+Config.VehicleWeapons = {
+    GetHashKey("buzzard"),
+    GetHashKey("insurgent"),
 }
 
 Config.ManagedDensity = true
