@@ -163,6 +163,11 @@ Config.TrafficArea = { -- Add or remove generators below
     { pos = vector3(922.22, 50.87, 80.9),       radius = 200 }, -- Diamond Casino
 }
 
+Config.lockVehicles = true -- locks AI Vehicles in traffic and/or parker ones
+Config.lockChance = 5 -- percentage chance of vehicles being locked - 100 to lock all vehicles
+Config.lockDistance = 5 -- maximum distance for lock check
+Config.parkedOnly = false -- true to lock only parked vehicles
+
 Config.Blips = true
 Config.TheBlips = {
     { title = "Del Perro Pier", colour = 266, id = 38,  vector3 = vector3( -1662.0057, -1124.9044, 13.6933) },
