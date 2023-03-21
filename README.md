@@ -28,7 +28,8 @@ Standalone Script
 * Vehicle disarming
 * Ability to crouch
 * Hands up
-** There's more but im tired**
+
+### There's more but im tired.
 
 ## Installation
 
