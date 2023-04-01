@@ -137,21 +137,13 @@ Config.VehicleWeapons = {
 }
 
 Config.ManagedDensity = true
+Config.DynamicPedSpawner = true -- Adjusts the ped spawn rate based on the time of day and weather conditions (ManagedDensity needs to be enabled)
 Config.GeneratorsDensity = {
     ['vehicle'] = 0.8,
     ['parked'] = 0.8,
     ['multiplier'] = 0.8,
     ['peds'] = 0.8,
     ['actions'] = 0.8
-}
-
-Config.DynamicPedSpawner = true -- Adjusts the ped spawn rate based on the time of day and weather conditions
-Config.dspawnRadius = 100.0 -- Normal peds spawn density from Config.GeneratorsDensity
-Config.dspawnLocations = {
-    { x = -73.0, y = -818.0, z = 243.0 },
-    { x = 284.0, y = -1313.0, z = 32.0 },
-    { x = -164.0, y = -1001.0, z = 233.0 },
-    { x = 267.0, y = -1748.0, z = 29.0 }
 }
 
 -- If ManagedDensity is enabled this will be kept disabled.
