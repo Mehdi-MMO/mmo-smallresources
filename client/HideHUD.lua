@@ -3,9 +3,7 @@ if Config.HideHud then
         while true do
             Citizen.Wait(0)
             for _, v in pairs(Config.HudElements) do
-                if v.hidden then
-                    HideHudComponentThisFrame(v.id)
-                end
+                HideHudComponentThisFrame(v)
             end
         end
     end)

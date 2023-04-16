@@ -1,5 +1,4 @@
-if Config.HandsUp.enabled then
-
+if Config.HandsUp then
     local handsStatus = false
     local surrenderStatus = false
 
@@ -64,7 +63,6 @@ if Config.HandsUp.enabled then
         hands(not handsStatus)
     end)
 
-    RegisterKeyMapping('handsup', 'Toggle Hands Up', 'KEYBOARD', Config.HandsUp.keybind)
-    RegisterKeyMapping('surrender', 'Toggle Surrender', 'KEYBOARD', Config.HandsUp.surrender)
-
+    RegisterKeyMapping('handsup', 'Toggle Hands Up', 'keyboard', 'X')
+    RegisterKeyMapping('surrender', 'Toggle Surrender', 'keyboard', 'F9')
 end

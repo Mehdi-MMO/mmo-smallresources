@@ -55,7 +55,7 @@ Keys = {
     ["M"] = 244,
     [","] = 82,
     ["."] = 81,
-    ["LEFTCTRL"] = 36,
+    ["LCONTROL"] = 36,
     ["LEFTALT"] = 19,
     ["SPACE"] = 22,
     ["RIGHTCTRL"] = 70,
@@ -82,58 +82,55 @@ Keys = {
 ---------------------------------------------------------------------
 ---------------------------------------------------------------------
 
-Config.HandsUp = {
-    ['enabled'] = true,
-    ['keybind'] = 'X',
-    ['surrender'] = 'F9'
-}
+-- Note: You can change the keybind in the settings > key bindings > fivem.
+-- Default keybinds: X for Hands Up, F9 for Surrender.
+Config.HandsUp = true -- true to enable crouch & surrender, false to disable.
 
-Config.AimAssist = true -- True to remove aim assist on controllers. False to allow
-Config.BlindFire = true -- True to stop players from blind firing around corners. False to allow blind firing around corners
-Config.Crouch = true -- True to add updated crouch feature, false to ignore (Left Ctrl to use crouch)
-Config.CustomPlates = false -- Custom California plates stream
-Config.DisableAmbientSounds = true -- True Lowers the noises of ammunations gun range, false leaves native ambiance
-Config.DisconnectReason = true -- Send a message in the console for all clients with who disconnected and the reason
-Config.DisconnectTest = true -- if you want to test it
-Config.DisconnectCmdName = "disconnecttest" -- command name for test
-Config.DriveBy = true -- True to stop players from shooting from a moving vehicle going above 30mph. False to diable.(Find the lines below in client.lua and change 30 to whatever speed you want set)
-Config.DriveBySpeed = 30 -- In MPH
-Config.HeadLightsStrength = 10 -- There's no limit, recommended to go above 10.0 to blind em people
-Config.HealthRegen = false -- True stops native health regeneration, false allows native health regeneration to happen
-Config.Heli = true -- Helicopter HUD and Realisitc takeoff/landing
-Config.HornFlash = true -- Flash headlights when car horn is active
-Config.HornFlashEmerg = false -- for emergency vehicles only
-Config.IdleCam = true -- True Stops the native camera from panning around when player stands idle, false allows
-Config.JumpSpam = true -- True to stop players from jumping spamming, gives rag doll chance when jumping. False to disable
-Config.PID = true -- Toggle Player ID above their head with left alt
-Config.PIDToggleKey = Keys["LEFTALT"]
-Config.PistolWhip = true -- True to turn off pistol whipping, false to allow
-Config.PointKeybind = Keys["B"]
-Config.PVP = true
-Config.StaminaBuff = true -- True to give staminia buff, allowing longer running. False to disable.
-Config.VehRewards = true -- True to disable vehicle rewards (guns from cars). False to enable vehicle rewards
-Config.WeaponDrops = true -- True to stop NPC wewapon drop rewards. False to allow NPC to drop weapon rewards
+-- Note: You can change the keybind in the settings > key bindings > fivem.
+-- Default keybinds: left control to crouch.
+Config.Crouch = true -- true enable crouch, false to disable.
 
-Config.HideHud = true -- hide hud element below
--- IF SET TO TRUE, IT WILL FORCE SHOW IT! DELETE THE LINE THE CONFIG OR COMMENT IT!
+Config.AimAssist = true -- Set to true to remove aim assist on controllers. Set to false to allow aim assist.
+Config.BlindFire = true -- Set to true to prevent blind firing around corners. Set to false to allow blind firing.
+Config.CustomPlates = false -- Set to true to enable custom California license plates. Set to false to disable.
+Config.DisableAmbientSounds = true -- Set to true to reduce the noise of the ammunations gun range. Set to false to leave native ambiance.
+
+Config.DisconnectReason = true -- Set to true to display a message in the console for all clients when a player disconnects.
+Config.DisconnectTest = true -- Set to true to enable a disconnect test. Set to false to disable.
+Config.DisconnectCmdName = "disconnecttest" -- The command name for the disconnect test.
+
+Config.DriveBy = true -- Set to true to prevent players from shooting from a moving vehicle going above a certain speed.
+Config.DriveBySpeed = 30 -- The speed limit for drive-by shooting, in MPH.
+
+Config.HeadLightsStrength = 12.0 -- The strength of the headlights. Recommended to go above 10.0 to blind people.
+Config.HealthRegen = true -- Set to true to allow native health regeneration, Set to false to disable health regeneration.
+Config.Heli = true -- Set to true to enable helicopter HUD and realistic takeoff/landing.
+Config.HornFlash = true -- Set to true to flash headlights when car horn is active.
+Config.HornFlashEmerg = false -- Set to true to limit headlight flashing to emergency vehicles.
+Config.IdleCam = true -- Set to true to stop the native camera from panning around when the player stands idle.
+Config.JumpSpam = true -- Set to true to prevent players from jumping spamming, with a chance of rag dolling. Set to false to disable.
+Config.PID = true -- Set to true to toggle player ID above their head with left alt.
+Config.PIDToggleKey = Keys["LEFTALT"] -- The keybind to toggle player ID.
+Config.PistolWhip = true -- Set to true to disable pistol whipping. Set to false to allow pistol whipping.
+Config.PointKeybind = Keys["B"] -- The keybind for pointing.
+Config.PVP = true -- Set to true to enable player vs. player combat. Set to false to disable.
+Config.StaminaBuff = true -- Set to true to give a stamina buff allowing longer running. Set to false to disable.
+Config.VehRewards = true -- Set to true to disable vehicle rewards (guns from cars). Set to false to enable vehicle rewards.
+Config.WeaponDrops = true -- Set to true to prevent NPC weapon drop rewards. Set to false to allow NPC weapon drop rewards.
+
+Config.HideHud = true -- Set to true to hide the HUD elements listed below.
 Config.HudElements = {
-    HUD_WANTED_STARS = { id = 1, hidden = true },
-    HUD_WEAPON_ICON = { id = 2, hidden = true },
-    HUD_CASH = { id = 3, hidden = true },
-    HUD_MP_CASH = { id = 4, hidden = true },
-    HUD_VEHICLE_NAME = { id = 6, hidden = true },
-    HUD_AREA_NAME = { id = 7, hidden = true },
-    HUD_VEHICLE_CLASS = { id = 8, hidden = true },
-    HUD_STREET_NAME = { id = 9, hidden = true },
-    HUD_CASH_CHANGE = { id = 13, hidden = true },
-    HUD_RETICLE = { id = 14, hidden = true },
-    HUD_SAVING_GAME = { id = 17, hidden = true },    -- True to hide the hud element
-}
-
-Config.DisableVehicleWeapons = true -- True to disable all weapons, false to disable specific weapons AND only use DisableWeapons = false if you are using the Config.VehicleWeapons below
-Config.VehicleWeapons = {
-    GetHashKey("buzzard"),
-    GetHashKey("insurgent"),
+    HUD_WANTED_STARS = 1,
+    HUD_WEAPON_ICON = 2,
+    HUD_CASH = 3,
+    HUD_MP_CASH = 4,
+    HUD_VEHICLE_NAME = 6,
+    HUD_AREA_NAME = 7,
+    HUD_VEHICLE_CLASS = 8,
+    HUD_STREET_NAME = 9,
+    HUD_CASH_CHANGE = 13,
+    HUD_RETICLE = 14,
+    HUD_SAVING_GAME = 17,
 }
 
 Config.ManagedDensity = true
@@ -146,19 +143,23 @@ Config.GeneratorsDensity = {
     ['actions'] = 0.8
 }
 
--- If ManagedDensity is enabled this will be kept disabled.
-Config.TrafficZones = false -- True to disable generators, false to allow generators of peds and vehicles
-Config.TrafficArea = { -- Add or remove generators below
-    { pos = vector3( -1539.89, -992.49, 13.02), radius = 100 }, -- Del Perro Pier parking lot
-    { pos = vector3( -50.82, -1114.05, 26.44),  radius = 100 }, -- Premium Deluxe Motors Dealership
-    { pos = vector3(824.36, -998.82, 26.29),    radius = 100 }, -- La Mesa Gas Station
-    { pos = vector3(922.22, 50.87, 80.9),       radius = 200 }, -- Diamond Casino
+
+-- Enabling ManagedDensity will disable this setting.
+Config.TrafficZones = false -- If true, generators for peds and vehicles will be disabled in specified areas.
+-- Add or remove zones as needed. Each zone includes a position and radius.
+Config.TrafficArea = {
+    { pos = vector3(-1539.89, -992.49, 13.02), radius = 100 }, -- Del Perro Pier parking lot
+    { pos = vector3(-50.82, -1114.05, 26.44), radius = 100 }, -- Premium Deluxe Motors Dealership
+    { pos = vector3(824.36, -998.82, 26.29), radius = 100 }, -- La Mesa Gas Station
+    { pos = vector3(922.22, 50.87, 80.9), radius = 200 }, -- Diamond Casino
 }
 
-Config.lockVehicles = true -- locks AI Vehicles in traffic and/or parker ones
-Config.lockChance = 5 -- percentage chance of vehicles being locked - 100 to lock all vehicles
-Config.lockDistance = 5 -- maximum distance for lock check
-Config.parkedOnly = false -- true to lock only parked vehicles
+
+Config.lockVehicles = true -- Enabling this will lock all AI vehicles in traffic and/or parked vehicles.
+Config.lockChance = 5 -- Percentage chance of vehicles being locked (100 locks all vehicles).
+Config.lockDistance = 5 -- Maximum distance to check for locked vehicles.
+Config.parkedOnly = false -- Setting this to true will lock only parked vehicles.
+
 
 Config.Blips = true
 Config.TheBlips = {
