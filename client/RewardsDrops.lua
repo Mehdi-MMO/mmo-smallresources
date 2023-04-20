@@ -1,9 +1,8 @@
 if Config.VehRewards then
     Citizen.CreateThread(function()
-        local id = PlayerId()
         while true do
-            Citizen.Wait(1000)
-            DisablePlayerVehicleRewards(id)
+            Citizen.Wait(10)
+            DisablePlayerVehicleRewards(PlayerId())
         end
     end)
 end

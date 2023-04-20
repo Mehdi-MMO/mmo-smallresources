@@ -115,7 +115,7 @@ Config.PistolWhip = true -- Set to true to disable pistol whipping. Set to false
 Config.PointKeybind = Keys["B"] -- The keybind for pointing.
 Config.PVP = true -- Set to true to enable player vs. player combat. Set to false to disable.
 Config.StaminaBuff = true -- Set to true to give a stamina buff allowing longer running. Set to false to disable.
-Config.VehRewards = true -- Set to true to disable vehicle rewards (guns from cars). Set to false to enable vehicle rewards.
+Config.VehRewards = true -- Set to true to disable vehicle rewards (guns from police cars). Set to false to enable vehicle rewards.
 Config.WeaponDrops = true -- Set to true to prevent NPC weapon drop rewards. Set to false to allow NPC weapon drop rewards.
 
 Config.HideHud = true -- Set to true to hide the HUD elements listed below.
