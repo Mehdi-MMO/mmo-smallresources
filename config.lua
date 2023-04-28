@@ -117,7 +117,7 @@ Config.PVP = true -- Set to true to enable player vs. player combat. Set to fals
 Config.StaminaBuff = true -- Set to true to give a stamina buff allowing longer running. Set to false to disable.
 Config.VehRewards = true -- Set to true to disable vehicle rewards (guns from police cars). Set to false to enable vehicle rewards.
 Config.WeaponDrops = true -- Set to true to prevent NPC weapon drop rewards. Set to false to allow NPC weapon drop rewards.
-
+Config.weaponRedical = true -- Set to true to remove redical for all weapons except snipers 
 Config.HideHud = true -- Set to true to hide the HUD elements listed below.
 Config.HudElements = {
     HUD_WANTED_STARS = 1,
@@ -129,7 +129,6 @@ Config.HudElements = {
     HUD_VEHICLE_CLASS = 8,
     HUD_STREET_NAME = 9,
     HUD_CASH_CHANGE = 13,
-    HUD_RETICLE = 14,
     HUD_SAVING_GAME = 17,
 }
 
