@@ -155,7 +155,7 @@ Config.TrafficArea = {
 }
 
 
-Config.lockVehicles = true -- Enabling this will lock all AI vehicles in traffic and/or parked vehicles.
+Config.lockVehicles = false -- Enabling this will lock all AI vehicles in traffic and/or parked vehicles.
 Config.lockChance = 5 -- Percentage chance of vehicles being locked (100 locks all vehicles).
 Config.lockDistance = 5 -- Maximum distance to check for locked vehicles.
 Config.parkedOnly = false -- Setting this to true will lock only parked vehicles.
