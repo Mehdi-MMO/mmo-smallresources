@@ -3,7 +3,7 @@ game 'gta5'
 lua54 'yes'
 
 title "mmo-smallresources"
-author "Mehdi MMO - Sweet Vibes#7561"
+author "mehdimmo" -- discord
 description "A script that contains multiple needed roleplay functionalities"
 version "1.3.5"
 
