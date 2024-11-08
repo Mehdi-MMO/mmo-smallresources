@@ -1,17 +1,16 @@
-local cached_players = {}
-local b = true
+local cachedPlayers = {}
+local printed = true
 
 RegisterNetEvent("mmo-smallresources:playerDisconnect")
 AddEventHandler("mmo-smallresources:playerDisconnect", function(player, info)
-    cached_players[player] = info
-    for k, v in pairs(cached_players) do
-        if b then
-            print("^3" .. v.name .. " ^7(ID: ^3" .. v.srco .. "^7) disconnected [" .. v.date .. "] - Reason: ^3" ..
-                      v.res)
-            b = false
+    cachedPlayers[player] = info
+
+    for playerID, details in pairs(cachedPlayers) do
+        if printed then
+            print("^3" .. details.name .. " ^7(ID: ^3" .. details.srco .. "^7) disconnected [" .. details.date .. "] - Reason: ^3" .. details.res)
+            printed = false
         end
     end
-    if cached_players[player] ~= nil then
-        cached_players[player] = nil
-    end
+
+    cachedPlayers[player] = nil
 end)

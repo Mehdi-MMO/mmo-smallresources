@@ -9,27 +9,21 @@ if Config.HandsUp then
         end
     end
 
-    local function check(ped)
-        if not IsEntityDead(ped) and not IsPedDeadOrDying(ped) and not IsPlayerFreeAiming(ped) and
-            not IsPedAimingFromCover(ped) and not IsPedSwimming(ped) and not IsPedShooting(ped) and
-            not IsPedClimbing(ped) and not IsPedCuffed(ped) and not IsPedDiving(ped) and not IsPedFalling(ped) and
-            not IsPedJumping(ped) and not IsPedJumpingOutOfVehicle(ped) and IsPedOnFoot(ped) and not IsPedRunning(ped) and
-            not IsPedInParachuteFreeFall(ped) and not IsPedSprinting(ped) then
-            return true
-        else
-            return false
-        end
+    local function canPerformAction(ped)
+        return not (IsEntityDead(ped) or IsPedSwimming(ped) or IsPedInAnyVehicle(ped, true) or
+                    IsPedClimbing(ped) or IsPedCuffed(ped) or IsPedDiving(ped) or IsPedFalling(ped) or
+                    IsPedJumping(ped) or IsPedJumpingOutOfVehicle(ped) or IsPedRunning(ped) or
+                    IsPedSprinting(ped) or IsPedInParachuteFreeFall(ped))
     end
 
-    function hands(bool)
+    function hands(shouldRaiseHands)
         local ped = PlayerPedId()
-
-        local dict = 'missminuteman_1ig_2'
-
-        if check(ped) then
-            if bool then
-                RequestAndWaitForAnimDict(dict)
-                TaskPlayAnim(ped, dict, 'handsup_enter', 8.0, 8.0, -1, 50, 0, false, false, false)
+        local animDict = 'missminuteman_1ig_2'
+        
+        if canPerformAction(ped) then
+            if shouldRaiseHands then
+                RequestAndWaitForAnimDict(animDict)
+                TaskPlayAnim(ped, animDict, 'handsup_enter', 8.0, 8.0, -1, 50, 0, false, false, false)
                 handsStatus = true
             else
                 ClearPedTasks(ped)
@@ -38,15 +32,14 @@ if Config.HandsUp then
         end
     end
 
-    function surrender(bool)
+    function surrender(shouldSurrender)
         local ped = PlayerPedId()
+        local animDict = 'random@arrests'
 
-        local dict = 'random@arrests'
-
-        if check(ped) == true then
-            if bool then
-                RequestAndWaitForAnimDict(dict)
-                TaskPlayAnim(ped, dict, "idle_2_hands_up", 8.0, 1.0, -1, 2, 0, 0, 0, 0)
+        if canPerformAction(ped) then
+            if shouldSurrender then
+                RequestAndWaitForAnimDict(animDict)
+                TaskPlayAnim(ped, animDict, "idle_2_hands_up", 8.0, 1.0, -1, 2, 0, 0, 0, 0)
                 surrenderStatus = true
             else
                 ClearPedTasks(ped)

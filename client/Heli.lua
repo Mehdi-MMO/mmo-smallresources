@@ -1,10 +1,7 @@
-if Config.Heli then
-    local UI = {
-        x = -0.36,
-        y = 0.22
-    }
+if Config.HeliHUD.hud then
+    local UI = Config.HeliHUD.UIPosition
 
-    function Text(text, x, y, scale)
+    local function DisplayText(text, x, y, scale)
         SetTextFont(4)
         SetTextProportional(0)
         SetTextScale(scale, scale)
@@ -17,126 +14,85 @@ if Config.Heli then
         DrawText(x, y)
     end
 
+    local function DrawHeliStatus()
+        local ped = GetPlayerPed(-1)
+        local isInHeli = IsPedInAnyHeli(ped)
+        local vehicle = GetVehiclePedIsIn(ped, false)
+        local engineRunning = GetIsVehicleEngineRunning(vehicle)
+        
+        if isInHeli then
+            local heliSpeed = GetEntitySpeed(vehicle) * 2.24  -- to MPH
+            local altitude = GetEntityHeightAboveGround(vehicle)
+            local mainRotorHealth = GetHeliMainRotorHealth(vehicle)
+            local tailRotorHealth = GetHeliTailRotorHealth(vehicle)
+            
+            DisplayText(engineRunning and "~g~ENG" or "~r~ENG", UI.x + 0.4016, UI.y + 0.476, 0.55)
+
+            if mainRotorHealth > 800 then
+                DisplayText("~g~MAIN", UI.x + 0.4516, UI.y + 0.476, 0.55)
+            elseif mainRotorHealth > 200 then
+                DisplayText("~y~MAIN", UI.x + 0.4516, UI.y + 0.476, 0.55)
+            else
+                DisplayText("~r~MAIN", UI.x + 0.4516, UI.y + 0.476, 0.55)
+            end
+
+            if tailRotorHealth > 300 then
+                DisplayText("~g~TAIL", UI.x + 0.5, UI.y + 0.476, 0.55)
+            elseif tailRotorHealth > 100 then
+                DisplayText("~y~TAIL", UI.x + 0.5, UI.y + 0.476, 0.55)
+            else
+                DisplayText("~r~TAIL", UI.x + 0.5, UI.y + 0.476, 0.55)
+            end
+
+            DisplayText(math.ceil(altitude), UI.x + 0.549, UI.y + 0.476, 0.45)
+            DisplayText("ALTITUDE", UI.x + 0.549, UI.y + 0.502, 0.29)
+            DisplayText(math.ceil(heliSpeed), UI.x + 0.598, UI.y + 0.476, 0.45)
+            DisplayText("AIR SPEED", UI.x + 0.598, UI.y + 0.502, 0.29)
+
+            DrawRect(UI.x + 0.5, UI.y + 0.5, 0.255, 0.085, 25, 25, 25, 255)
+            DrawRect(UI.x + 0.5, UI.y + 0.5, 0.25, 0.075, 51, 51, 51, 255)
+            DrawRect(UI.x + 0.402, UI.y + 0.5, 0.040, 0.050, 25, 25, 25, 255)
+            DrawRect(UI.x + 0.4516, UI.y + 0.5, 0.040, 0.050, 25, 25, 25, 255)
+            DrawRect(UI.x + 0.5, UI.y + 0.5, 0.040, 0.050, 25, 25, 25, 255)
+            DrawRect(UI.x + 0.549, UI.y + 0.5, 0.040, 0.050, 25, 25, 25, 255)
+            DrawRect(UI.x + 0.598, UI.y + 0.5, 0.040, 0.050, 25, 25, 25, 255)
+        end
+    end
+
     Citizen.CreateThread(function()
         while true do
             Citizen.Wait(1)
+            DrawHeliStatus()
+        end
+    end)
+end
 
-            local Ped = GetPlayerPed(-1)
-            local inHeli = IsPedInAnyHeli(Ped)
-            local PedVehicle = GetVehiclePedIsIn(Ped, false)
-            local HeliSpeed = GetEntitySpeed(PedVehicle) * 2.24
-            local Engine = GetIsVehicleEngineRunning(PedVehicle)
-            local Height = GetEntityHeightAboveGround(PedVehicle)
-            local MainRotorHealth = GetHeliMainRotorHealth(PedVehicle)
-            local TailRotorHealth = GetHeliTailRotorHealth(PedVehicle)
+if Config.HeliHUD.realistic then
+    local function ControlHeliSpeed()
+        local ped = GetPlayerPed(-1)
+        local vehicle = GetVehiclePedIsIn(ped, false)
+        local altitude = GetEntityHeightAboveGround(vehicle)
+        local heliSpeed = GetEntitySpeed(vehicle) * 2.24  -- to MPH
 
-            if inHeli then
-                -- engine display
-                if Engine then
-                    Text("~g~ENG", UI.x + 0.4016, UI.y + 0.476, 0.55)
-                    Text("~g~__", UI.x + 0.4016, UI.y + 0.47, 0.79)
-                else
-                    Text("~r~ENG", UI.x + 0.4016, UI.y + 0.476, 0.55)
-                    Text("~r~__", UI.x + 0.4016, UI.y + 0.47, 0.79)
-                end
-
-                -- Main rotor display
-                if MainRotorHealth > 800 and Engine then
-                    Text("~g~MAIN", UI.x + 0.4516, UI.y + 0.476, 0.55)
-                    Text("~g~__", UI.x + 0.4516, UI.y + 0.47, 0.79)
-                elseif MainRotorHealth > 200 and MainRotorHealth < 800 and Engine then
-                    Text("~y~MAIN", UI.x + 0.4516, UI.y + 0.476, 0.55)
-                    Text("~y~__", UI.x + 0.4516, UI.y + 0.47, 0.79)
-                elseif MainRotorHealth < 200 and Engine then
-                    Text("~r~MAIN", UI.x + 0.4516, UI.y + 0.476, 0.55)
-                    Text("~r~__", UI.x + 0.4516, UI.y + 0.47, 0.79)
-                else
-                    Text("~r~MAIN", UI.x + 0.4516, UI.y + 0.476, 0.55)
-                    Text("~r~__", UI.x + 0.4516, UI.y + 0.47, 0.79)
-                end
-
-                -- Tail rotor display
-                if TailRotorHealth > 300 and Engine then
-                    Text("~g~TAIL", UI.x + 0.5, UI.y + 0.476, 0.55)
-                    Text("~g~__", UI.x + 0.5, UI.y + 0.47, 0.79)
-                elseif TailRotorHealth > 100 and TailRotorHealth < 300 and Engine then
-                    Text("~y~TAIL", UI.x + 0.5, UI.y + 0.476, 0.55)
-                    Text("~y~__", UI.x + 0.5, UI.y + 0.47, 0.79)
-                elseif TailRotorHealth < 100 and Engine then
-                    Text("~r~TAIL", UI.x + 0.5, UI.y + 0.476, 0.55)
-                    Text("~r~__", UI.x + 0.5, UI.y + 0.47, 0.79)
-                elseif Engine == false then
-                    Text("~r~TAIL", UI.x + 0.5, UI.y + 0.476, 0.55)
-                    Text("~r~__", UI.x + 0.5, UI.y + 0.47, 0.79)
-                end
-
-                -- Altitude and speed display
-                Text(math.ceil(Height), UI.x + 0.549, UI.y + 0.476, 0.45)
-                Text("ALTITUDE", UI.x + 0.549, UI.y + 0.502, 0.29)
-
-                Text(math.ceil(HeliSpeed), UI.x + 0.598, UI.y + 0.476, 0.45)
-                Text("AIR SPEED", UI.x + 0.598, UI.y + 0.502, 0.29)
-
-                if HeliSpeed < 0.9 and HeliSpeed > 0.1 then
-                    Text("1", UI.x + 0.598, UI.y + 0.476, 0.45)
-                elseif HeliSpeed == 0.0 then
-                    Text("0", UI.x + 0.598, UI.y + 0.476, 0.45)
-                end
-
-                -- Big rectangels on the ui
-                DrawRect(UI.x + 0.5, UI.y + 0.5, 0.255, 0.085, 25, 25, 25, 255)
-                DrawRect(UI.x + 0.5, UI.y + 0.5, 0.25, 0.075, 51, 51, 51, 255)
-
-                -- Smaller squares in the rectangels.
-                DrawRect(UI.x + 0.402, UI.y + 0.5, 0.040, 0.050, 25, 25, 25, 255)
-                DrawRect(UI.x + 0.4516, UI.y + 0.5, 0.040, 0.050, 25, 25, 25, 255)
-                DrawRect(UI.x + 0.5, UI.y + 0.5, 0.040, 0.050, 25, 25, 25, 255)
-                DrawRect(UI.x + 0.549, UI.y + 0.5, 0.040, 0.050, 25, 25, 25, 255)
-                DrawRect(UI.x + 0.598, UI.y + 0.5, 0.040, 0.050, 25, 25, 25, 255)
-
-                -- Slows down helicopter on landing and takeoff but not if it's flying fast close to the ground.
-                if HeliSpeed > 15.0 and Height < 30.0 then
-                    SetEntityMaxSpeed(PedVehicle, 300.0)
-                elseif HeliSpeed > 15.0 and Height < 10.0 then
-                    SetEntityMaxSpeed(PedVehicle, 20.0)
-                elseif Height < 3.0 then
-                    SetEntityMaxSpeed(PedVehicle, 1.0)
-                elseif Height < 5.0 then
-                    SetEntityMaxSpeed(PedVehicle, 2.0)
-                elseif Height > 5.0 and Height < 10.0 then
-                    SetEntityMaxSpeed(PedVehicle, 3.0)
-                elseif Height > 10.0 and Height < 15.0 then
-                    SetEntityMaxSpeed(PedVehicle, 4.0)
-                elseif Height > 15.0 and Height < 20.0 then
-                    SetEntityMaxSpeed(PedVehicle, 6.0)
-                elseif Height > 20.0 and Height < 25.0 then
-                    SetEntityMaxSpeed(PedVehicle, 7.0)
-                elseif Height > 25.0 and Height < 30.0 then
-                    SetEntityMaxSpeed(PedVehicle, 10.0)
-                elseif Height > 30.0 then
-                    SetEntityMaxSpeed(PedVehicle, 300.0)
+        if IsPedInAnyHeli(ped) then
+            if heliSpeed > 15.0 then
+                if altitude < 3.0 then SetEntityMaxSpeed(vehicle, 1.0)
+                elseif altitude < 5.0 then SetEntityMaxSpeed(vehicle, 2.0)
+                elseif altitude < 10.0 then SetEntityMaxSpeed(vehicle, 3.0)
+                elseif altitude < 15.0 then SetEntityMaxSpeed(vehicle, 4.0)
+                elseif altitude < 20.0 then SetEntityMaxSpeed(vehicle, 6.0)
+                elseif altitude < 25.0 then SetEntityMaxSpeed(vehicle, 7.0)
+                elseif altitude < 30.0 then SetEntityMaxSpeed(vehicle, 10.0)
+                else SetEntityMaxSpeed(vehicle, 300.0)
                 end
             end
         end
-    end)
+    end
 
     Citizen.CreateThread(function()
-        local Ped = GetPlayerPed(-1)
         while true do
-            Citizen.Wait(1)
-
-            local PedVehicle = GetVehiclePedIsIn(Ped, false)
-            if IsPedInAnyHeli(Ped) and GetIsVehicleEngineRunning(PedVehicle) then
-                local HeliSpeed = GetEntitySpeed(PedVehicle) * 2.24
-                local Height = GetEntityHeightAboveGround(PedVehicle)
-
-                -- Shuts down engine 5 seconds after landing.
-                if Height < 3.0 and HeliSpeed == 0 then
-                    Citizen.Wait(5000)
-                    SetVehicleEngineOn(PedVehicle, false, true, true)
-                end
-            end
+            Citizen.Wait(100)
+            ControlHeliSpeed()
         end
     end)
-
 end

@@ -3,14 +3,20 @@ game 'gta5'
 lua54 'yes'
 
 title "mmo-smallresources"
-author "mehdimmo" -- discord
-description "A script that contains multiple needed roleplay functionalities"
-version "1.3.5"
+author "mehdimmo" -- Discord
+description "A script containing multiple essential roleplay functionalities"
+version "1.8.0"
 
--- Discord http://discord.gg/FqQFzndxZ4
+-- For assistance and updates: https://discord.gg/FqQFzndxZ4
 
-server_scripts {'server/*.lua'}
+server_scripts {
+    'server/*.lua'
+}
 
-client_scripts {'client/*.lua'}
+client_scripts {
+    'client/*.lua'
+}
 
-shared_scripts {'config.lua'}
+shared_scripts {
+    'config.lua'
+}
